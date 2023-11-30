@@ -4,24 +4,28 @@
             <div class="post-list">
                 <h3 class="flex-row-lc">
                     <span>Posts</span>
-                    <SearchBox style="font-size:0.8rem"/>
+                    <SearchBox style="font-size:0.8rem" />
                 </h3>
 
                 <ul>
-                    <li v-for="(post, idx) in filterList.slice(0,5)" :key="idx">
+                    <li v-for="(post, idx) in filterList" :key="idx">
                         <div class="el-card mgb-20">
                             <header>
                                 <router-link :to="post.path">{{ post.title }}</router-link>
                             </header>
-                            <p class="content" v-html="post.contentRendered"></p>
+                            <!-- <p class="content" v-html="post.contentRendered"></p> -->
+                            <p class="content" v-text="post.contentRendered" style="white-space: pre-line;"></p>
+                            <!-- <p class="content">
+                                {{ post.contentRendered }}
+                            </p> -->
                             <footer>
                                 <div class="footer-tags" v-if="Array.isArray(post.tags)">
                                     <span class="mgr-10">
                                         标签:
                                     </span>
                                     <span class="el-tag mgr-10" v-for="(tag, idx) in post.tags" :key="idx">{{
-                                            tag
-                                        }}</span>
+                                        tag
+                                    }}</span>
                                 </div>
                                 <span>创建时间: {{ post.createTm || '暂无' }}</span>
                             </footer>
@@ -32,7 +36,7 @@
             <div class="tag-list">
                 <h3 class="flex-row-lc">
                     <span class="mgr-10">Tags</span>
-                    <span v-if="filterParam.tags">{{filterParam.tags}}</span>
+                    <span v-if="filterParam.tags">{{ filterParam.tags }}</span>
                 </h3>
                 <div class="el-card">
                     <ul>
@@ -65,8 +69,8 @@ type post = {
     tags: Array<string>;
     createTm: string;
 }
-import {ref, computed} from 'vue';
-import {malou} from '../.temp/malou'
+import { ref, computed } from 'vue';
+import { malou } from '../.temp/malou'
 // import { inject } from 'vue'
 
 // const message: any = inject('router')
@@ -75,31 +79,33 @@ import {malou} from '../.temp/malou'
 
 
 // 去掉首页和404页面
-const initList: Array<post> = malou.filter(post => post.path !== '/' && !post.path.includes('404'))
+const myMalou = malou as Array<post>
+const initList = myMalou.filter(post => post.path !== '/' && !post.path.includes('404'))
 // 截取部分内容
 const fullList = initList.map(post => {
-    const {contentRendered,createTm} = post
-    post.contentRendered = contentRendered.slice(0, 50)
-    post.createTm = createTm.split('T')[0] ?? ''
+    const { contentRendered, createTm } = post
+    if (contentRendered) {
+        // 去除 HTML 标签和换行符，并替换 # 和空格#
+        let processedString = contentRendered.replace(/<\/?[^>]+>/g, '').replace(/[\r\n]+/g, '').replace(/# | #/g, '');
+        // 截取前 50 个字符
+        post.contentRendered = processedString.slice(0, 50);
+    }
+    if (createTm)
+        post.createTm = createTm.split('T')[0] ?? ''
     return post
 })
-// 未设置时间内容
-const unknowList = fullList.filter(post => {
-    return post.createTm === ''
-})
-// console.log('unknow',unknowList)
-// console.log('full', fullList)
+console.log('full', fullList)
 
 const filterParam = ref({
     tags: ''
 })
 
-const filterPost = (classify) => {
+const filterPost = (classify: string) => {
     filterParam.value.tags = classify
 }
 
-const filterList = computed((): Array<post> => {
-    const {tags} = filterParam.value
+const filterList = computed(() => {
+    const { tags } = filterParam.value
     let res = fullList
     if (tags !== '') {
         res = fullList.filter(post => {
@@ -111,7 +117,7 @@ const filterList = computed((): Array<post> => {
 
 const sort = (flag: string) => {
     const inc = flag === 'inc' ? 1 : -1
-    return (a, b) => {
+    return (a: post, b: post) => {
         // 返回值应该是一个数字，其正负性表示两个元素的相对顺序
         // > 0	a 在 b 后，如 [b, a]
         // < 0	a 在 b 前，如 [a, b]
@@ -136,7 +142,7 @@ const sort = (flag: string) => {
 const map = new Map()
 const classifyList = computed(() => {
     fullList.forEach(post => {
-        const {tags} = post
+        const { tags } = post
         tags.forEach(tags => {
             if (map.has(tags)) {
                 map.set(tags, map.get(tags) + 1)
@@ -154,6 +160,15 @@ const classifyList = computed(() => {
 </script>
 
 <style scoped lang="scss">
+.dark .malou {
+    // background-image: url('/images/heroImage.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: cover;
+    background-color: var(--el-bg-color);
+}
+
 .section1 {
     display: flex;
 
@@ -182,5 +197,50 @@ const classifyList = computed(() => {
             display: none;
         }
     }
+}
+
+
+.el-card {
+    --el-card-border-color: var(--el-border-color-light);
+    --el-card-border-radius: 4px;
+    --el-card-padding: 20px;
+    --el-card-bg-color: var(--el-fill-color-blank)
+}
+
+.el-card {
+    border-radius: var(--el-card-border-radius);
+    border: 1px solid var(--el-card-border-color);
+    padding: var(--el-card-padding);
+    background-color: var(--el-card-bg-color);
+    // background-color: var(--el-bg-color-page);
+    overflow: hidden;
+    color: var(--el-text-color-primary);
+    transition: var(--el-transition-duration);
+    box-shadow: var(--el-box-shadow-light);
+}
+
+.el-tag {
+    --el-tag-bg-color: var(--el-color-primary-light-9);
+    --el-tag-border-color: var(--el-color-primary-light-8);
+    --el-tag-hover-color: var(--el-color-primary);
+    --el-tag-text-color: var(--el-color-primary);
+    background-color: var(--el-tag-bg-color);
+    border-color: var(--el-tag-border-color);
+    color: var(--el-tag-text-color);
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    vertical-align: middle;
+    height: 1.5rem;
+    padding: 0 0.6rem;
+    font-size: var(--el-tag-font-size);
+    line-height: 1;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: var(--el-tag-border-radius);
+}
+
+html.dark .el-card {
+    --el-card-bg-color: var(--el-bg-color-overlay)
 }
 </style>

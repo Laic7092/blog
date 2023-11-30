@@ -42,7 +42,7 @@ export default defineUserConfig({
         myPlugin(),
         searchPlugin({
             isSearchable: (page) => page.path !== '/',
-            getExtraFields: (page) => [page.frontmatter.tags, page.frontmatter.createTm] ?? [],
+            getExtraFields: (page) => [page.frontmatter.tags, page.frontmatter.createTm] as Array<string>
         })
     ]
 })

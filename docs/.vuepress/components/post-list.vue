@@ -154,5 +154,11 @@ const filterPost = (classify) => {
         flex: 1;
         margin: 0 2rem;
     }
+
+    @media (width <= 30rem) {
+        .tag-list {
+            display: none;
+        }
+    }
 }
 </style>

@@ -1,7 +1,7 @@
 ---
 title: abc页面
 createTm: 2023-10-21
-tag:
+tags:
 - 知乎回答
 - malou
 - test

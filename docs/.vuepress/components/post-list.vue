@@ -2,7 +2,11 @@
     <div>
         <div class="section1">
             <div class="post-list">
-                <h3>Posts</h3>
+                <h3 class="flex-row-lc">
+                    <span>Posts</span>
+                    <SearchBox style="font-size:0.8rem" />
+                </h3>
+
                 <ul>
                     <li v-for="(post, idx) in malouList" :key="idx">
                         <div class="el-card mgb-20">
@@ -15,7 +19,8 @@
                                     <span class="mgr-10">
                                         标签:
                                     </span>
-                                    <span class="el-tag mgr-10" v-for="(tag, idx) in post.tag" :key="idx">{{ tag }}</span>
+                                    <span class="el-tag mgr-10" v-for="(tags, idx) in post.tags" :key="idx">{{ tags
+                                    }}</span>
                                 </div>
                                 <span>创建时间: {{ post.createTm || '暂无' }}</span>
                             </footer>
@@ -27,7 +32,8 @@
                 <h3>Tags</h3>
                 <div class="el-card">
                     <ul>
-                        <li v-for="(classify, idx) in classifyList" :key="idx" class="mgb-20" @click="filterPost(classify[0])">
+                        <li v-for="(classify, idx) in classifyList" :key="idx" class="mgb-20"
+                            @click="filterPost(classify[0])">
                             <input type="button" :value="classify[0] + '(' + classify[1] + ')'" class="el-tag">
                         </li>
                     </ul>
@@ -52,20 +58,20 @@ import { malou } from '../.temp/malou'
 
 const initList = malou.filter(post => post.path !== '/' && post.title !== '')
 const fullList = initList.map(post => {
-    const { createTm, contentRendered, tag } = post
+    const { createTm, contentRendered, tags } = post
     post.contentRendered = contentRendered.slice(0, 50)
     if (createTm) {
         post.createTm = createTm.split('T')[0]
     }
-    if (typeof post.tag === 'string') {
-        post.tag = [post.tag]
+    if (typeof post.tags === 'string') {
+        post.tags = [post.tags]
     }
     return post
 })
 // console.log('full', fullList);
 
 const filterParam = ref({
-    tag: ''
+    tags: ''
 })
 
 const loseList = fullList.filter(post => {
@@ -73,10 +79,10 @@ const loseList = fullList.filter(post => {
 })
 
 const filterList = computed(() => {
-    const { tag } = filterParam.value
+    const { tags } = filterParam.value
     let res = fullList
-    if (tag) {
-        res = fullList.filter(post => tag ? post.tag?.includes(tag) : true)
+    if (tags) {
+        res = fullList.filter(post => tags ? post.tags?.includes(tags) : true)
     }
     return res.filter(post => {
         return post.createTm
@@ -112,12 +118,12 @@ const sort = (flag: string) => {
 const classifyList = computed(() => {
     const map = new Map()
     fullList.forEach((post, idx) => {
-        const { key, tag } = post
-        tag.forEach(tag => {
-            if (map.has(tag)) {
-                map.set(tag, map.get(tag) + 1)
+        const { key, tags } = post
+        tags.forEach(tags => {
+            if (map.has(tags)) {
+                map.set(tags, map.get(tags) + 1)
             } else {
-                map.set(tag, 1)
+                map.set(tags, 1)
             }
         });
     })
@@ -131,7 +137,7 @@ console.log(classifyList.value, 'classify');
 
 
 const filterPost = (classify) => {
-    filterParam.value.tag = classify
+    filterParam.value.tags = classify
 }
 
 </script>
@@ -142,6 +148,11 @@ const filterPost = (classify) => {
 
     .post-list {
         flex: 3;
+
+        .flex-row-lc {
+            display: flex;
+            align-items: center;
+        }
 
         .footer-tags {
             span {
@@ -155,7 +166,7 @@ const filterPost = (classify) => {
         margin: 0 2rem;
     }
 
-    @media (width <= 30rem) {
+    @media (width <=30rem) {
         .tag-list {
             display: none;
         }

@@ -1,5 +1,6 @@
 import { defineUserConfig } from 'vuepress'
 import { defaultTheme } from 'vuepress'
+import { searchPlugin } from '@vuepress/plugin-search'
 import myPlugin from './myPlugin/my-plugin.js'
 
 
@@ -38,6 +39,10 @@ export default defineUserConfig({
         editLink: false
     }),
     plugins: [
-        myPlugin()
+        myPlugin(),
+        searchPlugin({
+            isSearchable: (page) => page.path !== '/',
+            getExtraFields: (page) => [page.frontmatter.tags, page.frontmatter.createTm] ?? [],
+        })
     ]
 })

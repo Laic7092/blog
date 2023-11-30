@@ -1,7 +1,7 @@
 ---
 title: abc页面
 createTm: 2023-10-14
-tag:
+tags:
 - 随便写的
 - qwe
 ---

@@ -1,7 +1,7 @@
 ---
 title: 测试标题
 createTm: 2023-11-28
-tag:
+tags:
 - 知乎回答
 - test
 - hh

@@ -21,11 +21,19 @@ export default defineUserConfig({
                 text: '首页',
                 link: '/',
             },
-            // NavbarGroup
             {
-                text: '测试',
-                children: ['/test/index.md', '/test/malou.md'],
+                text: '归档',
+                link: '/timeline.md'
             },
+            {
+                text: '关于',
+                link: '/about.md'
+            }
+            // NavbarGroup
+            // {
+            //     text: '测试',
+            //     children: ['/test/index.md', '/test/malou.md'],
+            // },
             // 字符串 - 页面文件路径
             // '/README.md',
         ],
@@ -35,7 +43,7 @@ export default defineUserConfig({
         //     ]
         // },
         logo: '/favicon.ico',
-        repo: 'https://github.com/Laic7092/Laic7092.github.io',
+        repo: 'https://github.com/Laic7092/blog',
         editLink: false
     }),
     plugins: [

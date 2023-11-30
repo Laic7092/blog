@@ -1,7 +1,7 @@
 import { defineClientConfig } from '@vuepress/client'
-import { provide, ref } from 'vue'
+import { provide } from 'vue'
 import postList from './components/post-list.vue'
-
+import timeLine from './components/time-line.vue'
 
 export default defineClientConfig({
   enhance({ app, router, siteData }) {
@@ -10,7 +10,9 @@ export default defineClientConfig({
     // console.log(router.getRoutes(), 'routes');
     // console.log(siteData, 'siteData');
     app.component('postList', postList)
+    app.component('timeLine', timeLine)
     app.provide('router', router)
+    app.provide('siteData', siteData)
   },
   setup() {
     provide('count', 5)

@@ -6,18 +6,13 @@
                     <span>Posts</span>
                     <SearchBox style="font-size:0.8rem" />
                 </h3>
-
                 <ul>
                     <li v-for="(post, idx) in filterList" :key="idx">
                         <div class="el-card mgb-20">
                             <header>
                                 <router-link :to="post.path">{{ post.title }}</router-link>
                             </header>
-                            <!-- <p class="content" v-html="post.contentRendered"></p> -->
                             <p class="content" v-text="post.contentRendered" style="white-space: pre-line;"></p>
-                            <!-- <p class="content">
-                                {{ post.contentRendered }}
-                            </p> -->
                             <footer>
                                 <div class="footer-tags" v-if="Array.isArray(post.tags)">
                                     <span class="mgr-10">
@@ -47,7 +42,6 @@
                     </ul>
                 </div>
             </div>
-
         </div>
     </div>
 </template>
@@ -59,7 +53,6 @@ type frontmatter = {
     tags?: Array<string>;
     [key: string]: any;
 }
-
 type post = {
     key: string;
     path: string;
@@ -70,7 +63,7 @@ type post = {
     createTm: string;
 }
 import { ref, computed } from 'vue';
-import { malou } from '../.temp/malou'
+import { malou } from '../.temp/malou.js'
 // import { inject } from 'vue'
 
 // const message: any = inject('router')
@@ -94,7 +87,7 @@ const fullList = initList.map(post => {
         post.createTm = createTm.split('T')[0] ?? ''
     return post
 })
-console.log('full', fullList)
+// console.log('full', fullList)
 
 const filterParam = ref({
     tags: ''
@@ -109,7 +102,7 @@ const filterList = computed(() => {
     let res = fullList
     if (tags !== '') {
         res = fullList.filter(post => {
-            return post.tags.indexOf(tags) === -1
+            return post.tags.indexOf(tags) !== -1
         })
     }
     return res.sort(sort('dec'))
@@ -243,4 +236,4 @@ const classifyList = computed(() => {
 html.dark .el-card {
     --el-card-bg-color: var(--el-bg-color-overlay)
 }
-</style>
+</style>./type.../types/type.js

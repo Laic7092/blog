@@ -3,4 +3,4 @@ home: true
 title: 首页
 pageClass: malou
 ---
-<postList></postList>
+<post-list></post-list>

@@ -24,7 +24,8 @@ const barPlugin = (options) => {
                 if (frontmatter) {
                     console.log(title, frontmatter, path);
                 }
-                data.set(key, { frontmatter, path, contentRendered, title })
+                const { tag, createTm } = frontmatter
+                data.set(key, { frontmatter, path, contentRendered, title, tag, createTm, key })
             },
             onInitialized(app) {
                 // console.log(app.pages);

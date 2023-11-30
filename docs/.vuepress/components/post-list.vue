@@ -1,43 +1,45 @@
 <template>
     <div>
-        <div class="aaa">
+        <div class="section1">
             <div class="post-list">
                 <h3>Posts</h3>
                 <ul>
-                    <li v-for="(post, idx) in list" :key="idx">
-                        <div class="card">
+                    <li v-for="(post, idx) in malouList" :key="idx">
+                        <div class="el-card mgb-20">
                             <header>
-                                <!-- <a :href="post.path">{{ post.title }}</a> -->
                                 <router-link :to="post.path">{{ post.title }}</router-link>
                             </header>
                             <p class="content" v-html="post.contentRendered"></p>
                             <footer>
-                                <span class="footer-tags">
-                                    标签: <span class="el-tag">{{ post.frontmatter.tag }}</span>
-                                </span>
-                                <span>创建时间: {{ post.frontmatter.createTm }}</span>
+                                <div class="footer-tags">
+                                    <span class="mgr-10">
+                                        标签:
+                                    </span>
+                                    <span class="el-tag mgr-10" v-for="(tag, idx) in post.tag" :key="idx">{{ tag }}</span>
+                                </div>
+                                <span>创建时间: {{ post.createTm || '暂无' }}</span>
                             </footer>
                         </div>
                     </li>
                 </ul>
             </div>
-
             <div class="tag-list">
                 <h3>Tags</h3>
-                <ul>
-                    <li v-for="(classify, idx) in classifyList" :key="idx">
-                        <span class="el-tag">{{ classify }}</span>
-                    </li>
-                </ul>
+                <div class="el-card">
+                    <ul>
+                        <li v-for="(classify, idx) in classifyList" :key="idx" class="mgb-20" @click="filterPost(classify[0])">
+                            <input type="button" :value="classify[0] + '(' + classify[1] + ')'" class="el-tag">
+                        </li>
+                    </ul>
+                </div>
             </div>
 
         </div>
-
     </div>
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue';
+import { ref, computed } from 'vue';
 import { malou } from '../.temp/malou'
 // import { inject } from 'vue'
 
@@ -47,79 +49,110 @@ import { malou } from '../.temp/malou'
 
 // const base = '/blog'
 // import {useRoute} from 'vuerouter'
-const list = malou.filter(post => post.path !== '/' && post.title !== '')
-    .map(post => {
-        // post.path = base + post.path
-        post.contentRendered = post.contentRendered.slice(0, 30)
-        return post
-    })
 
-const classifyList = computed(() => list.map(post => post.frontmatter.tag))
+const initList = malou.filter(post => post.path !== '/' && post.title !== '')
+const fullList = initList.map(post => {
+    const { createTm, contentRendered, tag } = post
+    post.contentRendered = contentRendered.slice(0, 50)
+    if (createTm) {
+        post.createTm = createTm.split('T')[0]
+    }
+    if (typeof post.tag === 'string') {
+        post.tag = [post.tag]
+    }
+    return post
+})
+// console.log('full', fullList);
+
+const filterParam = ref({
+    tag: ''
+})
+
+const loseList = fullList.filter(post => {
+    return !post.createTm
+})
+
+const filterList = computed(() => {
+    const { tag } = filterParam.value
+    let res = fullList
+    if (tag) {
+        res = fullList.filter(post => tag ? post.tag?.includes(tag) : true)
+    }
+    return res.filter(post => {
+        return post.createTm
+    }).sort(sort('dec'))
+})
+
+const malouList = computed(() => {
+    let a = filterList.value
+    a.push(...loseList)
+    return a
+})
+
+const sort = (flag: string) => {
+    const inc = flag === 'inc' ? 1 : -1
+    return (a, b) => {
+        // 返回值应该是一个数字，其正负性表示两个元素的相对顺序
+        const ymd1 = a.createTm?.split('-')
+        const ymd2 = b.createTm?.split('-')
+        let i = 0
+        let res = 0
+        while (i < 3) {
+            if (ymd1[i] === ymd2[i])
+                i++
+            else {
+                res = parseInt(ymd1[i]) > parseInt(ymd2[i]) ? inc : -inc
+                i = 4
+            }
+        }
+        return res
+    }
+}
+
+const classifyList = computed(() => {
+    const map = new Map()
+    fullList.forEach((post, idx) => {
+        const { key, tag } = post
+        tag.forEach(tag => {
+            if (map.has(tag)) {
+                map.set(tag, map.get(tag) + 1)
+            } else {
+                map.set(tag, 1)
+            }
+        });
+    })
+    return Array.from(map).map(item => {
+        // return item[0] + `(${item[1]})`
+        return item
+    })
+})
+
+console.log(classifyList.value, 'classify');
+
+
+const filterPost = (classify) => {
+    filterParam.value.tag = classify
+}
 
 </script>
 
 <style scoped lang="scss">
-.card {
-    background-color: var(--el-bg-color);
-    padding: 1rem;
-    margin-bottom: 2rem;
-    border-radius: 4px;
-    overflow: hidden;
-
-    // box-shadow: 0px 16px 48px 16px rgba(0, 0, 0, .72), 0px 12px 32px #000000, 0px 8px 16px -8px #000000;
-    .content {
-        max-height: 4rem;
-    }
-
-    .footer-tags {
-        align-items: center;
-    }
-}
-
-.aaa {
+.section1 {
     display: flex;
 
-    // box-shadow: 0px 12px 32px 4px rgba(0, 0, 0, .36), 0px 8px 20px rgba(0, 0, 0, .72);
     .post-list {
         flex: 3;
+
+        .footer-tags {
+            span {
+                vertical-align: middle;
+            }
+        }
     }
 
     .tag-list {
         flex: 1;
         margin: 0 2rem;
-
-        ul {
-            background-color: var(--el-bg-color);
-            padding: 1rem;
-
-            li {
-                margin-bottom: 1rem;
-            }
-        }
-    }
-
-    .el-tag {
-        --el-tag-bg-color: var(--el-color-primary-light-9);
-        --el-tag-border-color: var(--el-color-primary-light-8);
-        --el-tag-hover-color: var(--el-color-primary);
-        --el-tag-text-color: var(--el-color-primary);
-        background-color: var(--el-tag-bg-color);
-        border-color: var(--el-tag-border-color);
-        color: var(--el-tag-text-color);
-        display: inline-flex;
-        justify-content: center;
-        align-items: center;
-        vertical-align: middle;
-        height: 24px;
-        padding: 0 9px;
-        font-size: var(--el-tag-font-size);
-        line-height: 1;
-        border-width: 1px;
-        border-style: solid;
-        border-radius: var(--el-tag-border-radius);
-        box-sizing: border-box;
-        white-space: nowrap;
-        --el-icon-size: 14px;
     }
 }
 </style>

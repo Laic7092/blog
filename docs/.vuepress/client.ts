@@ -9,8 +9,6 @@ export default defineClientConfig({
     // console.log(router, 'router');
     // console.log(router.getRoutes(), 'routes');
     // console.log(siteData, 'siteData');
-    // console.log(foo);
-    // console.log('malou',malou);
     app.component('postList', postList)
     app.provide('router', router)
   },

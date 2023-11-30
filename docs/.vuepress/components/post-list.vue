@@ -4,23 +4,24 @@
             <div class="post-list">
                 <h3 class="flex-row-lc">
                     <span>Posts</span>
-                    <SearchBox style="font-size:0.8rem" />
+                    <SearchBox style="font-size:0.8rem"/>
                 </h3>
 
                 <ul>
-                    <li v-for="(post, idx) in malouList" :key="idx">
+                    <li v-for="(post, idx) in filterList.slice(0,5)" :key="idx">
                         <div class="el-card mgb-20">
                             <header>
                                 <router-link :to="post.path">{{ post.title }}</router-link>
                             </header>
                             <p class="content" v-html="post.contentRendered"></p>
                             <footer>
-                                <div class="footer-tags">
+                                <div class="footer-tags" v-if="Array.isArray(post.tags)">
                                     <span class="mgr-10">
                                         标签:
                                     </span>
-                                    <span class="el-tag mgr-10" v-for="(tags, idx) in post.tags" :key="idx">{{ tags
-                                    }}</span>
+                                    <span class="el-tag mgr-10" v-for="(tag, idx) in post.tags" :key="idx">{{
+                                            tag
+                                        }}</span>
                                 </div>
                                 <span>创建时间: {{ post.createTm || '暂无' }}</span>
                             </footer>
@@ -29,7 +30,10 @@
                 </ul>
             </div>
             <div class="tag-list">
-                <h3>Tags</h3>
+                <h3 class="flex-row-lc">
+                    <span class="mgr-10">Tags</span>
+                    <span v-if="filterParam.tags">{{filterParam.tags}}</span>
+                </h3>
                 <div class="el-card">
                     <ul>
                         <li v-for="(classify, idx) in classifyList" :key="idx" class="mgb-20"
@@ -45,60 +49,74 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue';
-import { malou } from '../.temp/malou'
+type frontmatter = {
+    title?: string;
+    createTm?: string;
+    tags?: Array<string>;
+    [key: string]: any;
+}
+
+type post = {
+    key: string;
+    path: string;
+    frontmatter?: frontmatter;
+    contentRendered?: string;
+    title: string;
+    tags: Array<string>;
+    createTm: string;
+}
+import {ref, computed} from 'vue';
+import {malou} from '../.temp/malou'
 // import { inject } from 'vue'
 
 // const message: any = inject('router')
 // const route = message.currentRoute
 // console.log(route.value);
 
-// const base = '/blog'
-// import {useRoute} from 'vuerouter'
 
-const initList = malou.filter(post => post.path !== '/' && post.title !== '')
+// 去掉首页和404页面
+const initList: Array<post> = malou.filter(post => post.path !== '/' && !post.path.includes('404'))
+// 截取部分内容
 const fullList = initList.map(post => {
-    const { createTm, contentRendered, tags } = post
+    const {contentRendered,createTm} = post
     post.contentRendered = contentRendered.slice(0, 50)
-    if (createTm) {
-        post.createTm = createTm.split('T')[0]
-    }
-    if (typeof post.tags === 'string') {
-        post.tags = [post.tags]
-    }
+    post.createTm = createTm.split('T')[0] ?? ''
     return post
 })
-// console.log('full', fullList);
+// 未设置时间内容
+const unknowList = fullList.filter(post => {
+    return post.createTm === ''
+})
+// console.log('unknow',unknowList)
+// console.log('full', fullList)
 
 const filterParam = ref({
     tags: ''
 })
 
-const loseList = fullList.filter(post => {
-    return !post.createTm
-})
+const filterPost = (classify) => {
+    filterParam.value.tags = classify
+}
 
-const filterList = computed(() => {
-    const { tags } = filterParam.value
+const filterList = computed((): Array<post> => {
+    const {tags} = filterParam.value
     let res = fullList
-    if (tags) {
-        res = fullList.filter(post => tags ? post.tags?.includes(tags) : true)
+    if (tags !== '') {
+        res = fullList.filter(post => {
+            return post.tags.indexOf(tags) === -1
+        })
     }
-    return res.filter(post => {
-        return post.createTm
-    }).sort(sort('dec'))
-})
-
-const malouList = computed(() => {
-    let a = filterList.value
-    a.push(...loseList)
-    return a
+    return res.sort(sort('dec'))
 })
 
 const sort = (flag: string) => {
     const inc = flag === 'inc' ? 1 : -1
     return (a, b) => {
         // 返回值应该是一个数字，其正负性表示两个元素的相对顺序
+        // > 0	a 在 b 后，如 [b, a]
+        // < 0	a 在 b 前，如 [a, b]
+        if (a.createTm === '') return 1
+        if (b.createTm === '') return -1
         const ymd1 = a.createTm?.split('-')
         const ymd2 = b.createTm?.split('-')
         let i = 0
@@ -108,17 +126,17 @@ const sort = (flag: string) => {
                 i++
             else {
                 res = parseInt(ymd1[i]) > parseInt(ymd2[i]) ? inc : -inc
-                i = 4
+                i = 99
             }
         }
         return res
     }
 }
 
+const map = new Map()
 const classifyList = computed(() => {
-    const map = new Map()
-    fullList.forEach((post, idx) => {
-        const { key, tags } = post
+    fullList.forEach(post => {
+        const {tags} = post
         tags.forEach(tags => {
             if (map.has(tags)) {
                 map.set(tags, map.get(tags) + 1)
@@ -132,14 +150,7 @@ const classifyList = computed(() => {
         return item
     })
 })
-
-console.log(classifyList.value, 'classify');
-
-
-const filterPost = (classify) => {
-    filterParam.value.tags = classify
-}
-
+// console.log(classifyList.value, 'classify');
 </script>
 
 <style scoped lang="scss">

@@ -2,10 +2,7 @@
     <div>
         <div class="section1">
             <div class="post-list">
-                <h3 class="flex-row-lc">
-                    <span>Posts</span>
-                    <SearchBox style="font-size:0.8rem" />
-                </h3>
+                <h3>Posts</h3>
                 <ul>
                     <li v-for="(post, idx) in filterList" :key="idx">
                         <div class="el-card mgb-20">
@@ -22,17 +19,27 @@
                                         tag
                                     }}</span>
                                 </div>
-                                <span>创建时间: {{ post.createTm || '暂无' }}</span>
+                                <span>创建时间: {{ post.date || '暂无' }}</span>
                             </footer>
                         </div>
                     </li>
                 </ul>
             </div>
             <div class="tag-list">
-                <h3 class="flex-row-lc">
-                    <span class="mgr-10">Tags</span>
-                    <span v-if="filterParam.tags">{{ filterParam.tags }}</span>
-                </h3>
+
+                <div class="flex-row-lc form-header">
+                    <h3>Tags</h3>
+                    <span v-if="filterParam.tags" class="el-tag is-round deletable mgl-10">
+                        <span>{{ filterParam.tags }}</span>
+                        <span class="del-btn" @click="filterPost('')">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+                                <path fill="currentColor"
+                                    d="M764.288 214.592 512 466.88 259.712 214.592a31.936 31.936 0 0 0-45.12 45.12L466.752 512 214.528 764.224a31.936 31.936 0 1 0 45.12 45.184L512 557.184l252.288 252.288a31.936 31.936 0 0 0 45.12-45.12L557.12 512.064l252.288-252.352a31.936 31.936 0 1 0-45.12-45.184z">
+                                </path>
+                            </svg>
+                        </span>
+                    </span>
+                </div>
                 <div class="el-card">
                     <ul>
                         <li v-for="(classify, idx) in classifyList" :key="idx" class="mgb-20"
@@ -49,7 +56,7 @@
 <script setup lang="ts">
 type frontmatter = {
     title?: string;
-    createTm?: string;
+    date?: string;
     tags?: Array<string>;
     [key: string]: any;
 }
@@ -60,7 +67,7 @@ type post = {
     contentRendered?: string;
     title: string;
     tags: Array<string>;
-    createTm: string;
+    date: string;
 }
 import { ref, computed } from 'vue';
 import { malou } from '../.temp/malou.js'
@@ -76,15 +83,15 @@ const myMalou = malou as Array<post>
 const initList = myMalou.filter(post => post.path !== '/' && !post.path.includes('404'))
 // 截取部分内容
 const fullList = initList.map(post => {
-    const { contentRendered, createTm } = post
+    const { contentRendered, date } = post
     if (contentRendered) {
         // 去除 HTML 标签和换行符，并替换 # 和空格#
         let processedString = contentRendered.replace(/<\/?[^>]+>/g, '').replace(/[\r\n]+/g, '').replace(/# | #/g, '');
         // 截取前 50 个字符
         post.contentRendered = processedString.slice(0, 50);
     }
-    if (createTm)
-        post.createTm = createTm.split('T')[0] ?? ''
+    if (date)
+        post.date = date.split('T')[0] ?? ''
     return post
 })
 // console.log('full', fullList)
@@ -114,10 +121,10 @@ const sort = (flag: string) => {
         // 返回值应该是一个数字，其正负性表示两个元素的相对顺序
         // > 0	a 在 b 后，如 [b, a]
         // < 0	a 在 b 前，如 [a, b]
-        if (a.createTm === '') return 1
-        if (b.createTm === '') return -1
-        const ymd1 = a.createTm?.split('-')
-        const ymd2 = b.createTm?.split('-')
+        if (a.date === '') return 1
+        if (b.date === '') return -1
+        const ymd1 = a.date?.split('-')
+        const ymd2 = b.date?.split('-')
         let i = 0
         let res = 0
         while (i < 3) {
@@ -168,11 +175,6 @@ const classifyList = computed(() => {
     .post-list {
         flex: 3;
 
-        .flex-row-lc {
-            display: flex;
-            align-items: center;
-        }
-
         .footer-tags {
             span {
                 vertical-align: middle;
@@ -182,7 +184,7 @@ const classifyList = computed(() => {
 
     .tag-list {
         flex: 1;
-        margin: 0 2rem;
+        margin-left: 2rem;
     }
 
     @media (width <=30rem) {
@@ -213,6 +215,30 @@ const classifyList = computed(() => {
 }
 
 .el-tag {
+    --el-tag-font-size: 0.9rem;
+    --el-tag-border-radius: 4px;
+    --el-tag-border-radius-rounded: 9999px;
+}
+
+.el-tag.is-round.deletable {
+    border-radius: var(--el-tag-border-radius-rounded);
+}
+
+
+
+.del-btn {
+    height: 1em;
+    width: 1em;
+    margin-left: 0.5rem;
+    cursor: pointer;
+    border-radius: var(--el-tag-border-radius-rounded);
+}
+
+.del-btn:hover {
+    background-color: var(--el-color-primary-light-5);
+}
+
+.el-tag {
     --el-tag-bg-color: var(--el-color-primary-light-9);
     --el-tag-border-color: var(--el-color-primary-light-8);
     --el-tag-hover-color: var(--el-color-primary);
@@ -236,4 +262,12 @@ const classifyList = computed(() => {
 html.dark .el-card {
     --el-card-bg-color: var(--el-bg-color-overlay)
 }
-</style>./type.../types/type.js
+
+.form-header {
+}
+
+.flex-row-lc {
+    display: flex;
+    align-items: baseline;
+}
+</style>

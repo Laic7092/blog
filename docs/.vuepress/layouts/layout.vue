@@ -31,7 +31,7 @@ const subscribe = () => {
             <template #page-content-top>
                 <div class="content-top">
                     <h1>{{ page.title }}</h1>
-                    <div class="mgb-10">
+                    <div>
                         <span>Tags: </span>
                         <span v-for="(tag, idx) in page.frontmatter.tags" :key="idx" class="el-tag mgl-10">{{ tag }}</span>
                     </div>

@@ -159,7 +159,7 @@ const classifyList = computed(() => {
 // console.log(classifyList.value, 'classify');
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 .dark .malou {
     // background-image: url('/images/heroImage.png');
     background-repeat: no-repeat;
@@ -185,7 +185,7 @@ const classifyList = computed(() => {
         margin-left: 2rem;
     }
 
-    @media (width <=30rem) {
+    @media (max-width: 719px) {
         .tag-list {
             display: none;
         }
@@ -260,10 +260,6 @@ const classifyList = computed(() => {
 html.dark .el-card {
     --el-card-bg-color: var(--el-bg-color-overlay)
 }
-
-.form-header {
-}
-
 .flex-row-lc {
     display: flex;
     align-items: baseline;

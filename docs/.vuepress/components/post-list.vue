@@ -171,10 +171,8 @@ const classifyList = computed(() => {
 
 .section1 {
     display: flex;
-
     .post-list {
         flex: 3;
-
         .footer-tags {
             span {
                 vertical-align: middle;

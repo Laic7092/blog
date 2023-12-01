@@ -2,6 +2,8 @@ import { defineClientConfig } from '@vuepress/client'
 import { provide } from 'vue'
 import postList from './components/post-list.vue'
 import timeLine from './components/time-line.vue'
+import Layout from './layouts/layout.vue'
+
 
 export default defineClientConfig({
   enhance({ app, router, siteData }) {
@@ -17,6 +19,8 @@ export default defineClientConfig({
   setup() {
     provide('count', 5)
   },
-  layouts: {},
+  layouts: {
+    Layout
+  },
   rootComponents: [],
 })

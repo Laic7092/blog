@@ -8,12 +8,21 @@ devDependencies:
   '@vuepress/client':
     specifier: 2.0.0-rc.0
     version: 2.0.0-rc.0
+  '@vuepress/core':
+    specifier: 2.0.0-rc.0
+    version: 2.0.0-rc.0
   '@vuepress/plugin-search':
+    specifier: 2.0.0-rc.0
+    version: 2.0.0-rc.0
+  '@vuepress/theme-default':
     specifier: 2.0.0-rc.0
     version: 2.0.0-rc.0
   vue:
     specifier: ^3.3.9
     version: 3.3.9
+  vue-router:
+    specifier: ^4.0.13
+    version: 4.0.13(vue@3.3.9)
   vuepress:
     specifier: 2.0.0-rc.0
     version: 2.0.0-rc.0(@vuepress/client@2.0.0-rc.0)(vue@3.3.9)
@@ -1812,6 +1821,15 @@ packages:
       '@vue/composition-api':
         optional: true
     dependencies:
+      vue: 3.3.9
+    dev: true
+
+  /vue-router@4.0.13(vue@3.3.9):
+    resolution: {integrity: sha512-LmXrC+BkDRLak+d5xTMgUYraT3Nj0H/vCbP+7usGvIl9Viqd1UP6AsP0i69pSbn9O0dXK/xCdp4yPw21HqV9Jw==, tarball: https://registry.npmmirror.com/vue-router/-/vue-router-4.0.13.tgz}
+    peerDependencies:
+      vue: ^3.2.0
+    dependencies:
+      '@vue/devtools-api': 6.5.1
       vue: 3.3.9
     dev: true
 

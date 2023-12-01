@@ -1,10 +1,8 @@
 ---
-title: 
-created: 2023-03-21 20:51:18
-tags: 
-aliases: 
-progress: 1
-updated:
+title: Js原型和闭包
+date: 2023-03-21 20:51:18
+tags:
+- js
 ---
 ## 1.一切（引用类型）都是对象，对象是属性的集合
 

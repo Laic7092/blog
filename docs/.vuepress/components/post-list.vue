@@ -11,7 +11,7 @@
                             </header>
                             <p class="content" v-text="post.contentRendered" style="white-space: pre-line;"></p>
                             <footer>
-                                <div class="footer-tags" v-if="Array.isArray(post.tags)">
+                                <div class="footer-tags mgb-10" v-if="Array.isArray(post.tags)">
                                     <span class="mgr-10">
                                         标签:
                                     </span>
@@ -43,7 +43,8 @@
                 <div class="el-card">
                     <ul>
                         <li v-for="(classify, idx) in classifyList" :key="idx" class="mgb-20">
-                            <input type="button" @click="filterPost(classify[0])" :value="classify[0] + '(' + classify[1] + ')'" class="el-tag">
+                            <input type="button" @click="filterPost(classify[0])"
+                                :value="classify[0] + '(' + classify[1] + ')'" class="el-tag">
                         </li>
                     </ul>
                 </div>
@@ -159,23 +160,32 @@ const classifyList = computed(() => {
 </script>
 
 <style lang="scss">
+@media (min-width: 959px) {
+    .dark .malou {
+        background-image: url('/images/heroImg.jpg');
+    }
+
+    .malou {
+        background-image: url('/images/heroImgLight.jpg');
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+}
+
 .malou {
-    background-image: url('/images/heroImgLight.jpg');
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-attachment: fixed;
-    background-size: cover;
     background-color: var(--el-bg-color);
 }
 
-.dark .malou {
-    background-image: url('/images/heroImg.jpg');
-}
+
 
 .section1 {
     display: flex;
+
     .post-list {
         flex: 3;
+
         .footer-tags {
             span {
                 vertical-align: middle;

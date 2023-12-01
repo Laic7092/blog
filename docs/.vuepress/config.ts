@@ -9,6 +9,7 @@ export default defineUserConfig({
     title: 'Laix\'s blog',
     description: '这是我的第一个博客',
     base: '/blog/',
+    head: [['link', { rel: 'apple-touch-icon', href: '/blog/apple-touch-icon.png' }]],
     markdown: {
         breaks: true
     },

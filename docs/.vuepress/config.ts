@@ -8,7 +8,6 @@ export default defineUserConfig({
     lang: 'zh-CN',
     title: 'Laix\'s blog',
     description: '这是我的第一个博客',
-    head: [['link', { rel: 'icon', href: '/blog/favicon.ico' }]],
     base: '/blog/',
     markdown: {
         breaks: true

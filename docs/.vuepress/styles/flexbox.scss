@@ -1,0 +1,48 @@
+$box-values: (
+    "20": 1rem,
+    "10": 0.5rem
+);
+
+@each $key, $value in $box-values {
+    .mgt-#{$key} {
+        margin-bottom: $value;
+    }
+
+    .mgb-#{$key} {
+        margin-bottom: $value;
+    }
+
+    .mgr-#{$key} {
+        margin-right: $value;
+    }
+
+    .mgl-#{$key} {
+        margin-left: $value;
+    }
+
+    .pdt-#{$key} {
+        padding-top: $value;
+    }
+
+    .pdr-#{$key} {
+        padding-right: $value;
+    }
+
+    .pdb-#{$key} {
+        padding-bottom: $value;
+    }
+
+    .pdl-#{$key} {
+        padding-left: $value;
+    }
+}
+
+@each $key, $value in $box-values {
+    .pd-#{$key} {
+        padding: $value;
+    }
+
+    .mg-#{$key} {
+        margin: $value;
+    }
+}

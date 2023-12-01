@@ -9,7 +9,6 @@ const barPlugin = (options) => {
         // console.log('pluginApp',app)
         return {
             name: 'vuepress-plugin-bar',
-
             // extendsMarkdownOptions(OPT, APP) {
             //     // console.log('malou',OPT,APP);
             // },
@@ -35,21 +34,12 @@ const barPlugin = (options) => {
                 } else if (!tags) {
                     tags = []
                 }
-                // if (!date) {
-                //     date = '0000-00-00'
-                // }
                 if (!title) {
                     title = '未命名'
                 }
                 if (!notPost || path.match(pattern)) {
                     data.set(key, { frontmatter, path, contentRendered, title, tags, date, key, notPost })
                 }
-                // if (path.match(pattern))
-                //     abc.set(key, path)
-                // const pattern = /\/[^\/]+\.html/
-                // if (typeof path === 'string' && !path.match(pattern)) {
-                //     data.set(key, { frontmatter, path, contentRendered, title, tags, date, key, notPost })
-                // }
             },
             // async onInitialized(app) {
             //     app.pages.push(

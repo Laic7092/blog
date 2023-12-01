@@ -42,9 +42,8 @@
                 </div>
                 <div class="el-card">
                     <ul>
-                        <li v-for="(classify, idx) in classifyList" :key="idx" class="mgb-20"
-                            @click="filterPost(classify[0])">
-                            <input type="button" :value="classify[0] + '(' + classify[1] + ')'" class="el-tag">
+                        <li v-for="(classify, idx) in classifyList" :key="idx" class="mgb-20">
+                            <input type="button" @click="filterPost(classify[0])" :value="classify[0] + '(' + classify[1] + ')'" class="el-tag">
                         </li>
                     </ul>
                 </div>
@@ -160,13 +159,17 @@ const classifyList = computed(() => {
 </script>
 
 <style lang="scss">
-.dark .malou {
-    // background-image: url('/images/heroImage.png');
+.malou {
+    background-image: url('/images/heroImgLight.jpg');
     background-repeat: no-repeat;
     background-position: center center;
     background-attachment: fixed;
     background-size: cover;
     background-color: var(--el-bg-color);
+}
+
+.dark .malou {
+    background-image: url('/images/heroImg.jpg');
 }
 
 .section1 {
@@ -192,38 +195,6 @@ const classifyList = computed(() => {
     }
 }
 
-
-.el-card {
-    --el-card-border-color: var(--el-border-color-light);
-    --el-card-border-radius: 4px;
-    --el-card-padding: 20px;
-    --el-card-bg-color: var(--el-fill-color-blank)
-}
-
-.el-card {
-    border-radius: var(--el-card-border-radius);
-    border: 1px solid var(--el-card-border-color);
-    padding: var(--el-card-padding);
-    background-color: var(--el-card-bg-color);
-    // background-color: var(--el-bg-color-page);
-    overflow: hidden;
-    color: var(--el-text-color-primary);
-    transition: var(--el-transition-duration);
-    box-shadow: var(--el-box-shadow-light);
-}
-
-.el-tag {
-    --el-tag-font-size: 0.9rem;
-    --el-tag-border-radius: 4px;
-    --el-tag-border-radius-rounded: 9999px;
-}
-
-.el-tag.is-round.deletable {
-    border-radius: var(--el-tag-border-radius-rounded);
-}
-
-
-
 .del-btn {
     height: 1em;
     width: 1em;
@@ -236,30 +207,6 @@ const classifyList = computed(() => {
     background-color: var(--el-color-primary-light-5);
 }
 
-.el-tag {
-    --el-tag-bg-color: var(--el-color-primary-light-9);
-    --el-tag-border-color: var(--el-color-primary-light-8);
-    --el-tag-hover-color: var(--el-color-primary);
-    --el-tag-text-color: var(--el-color-primary);
-    background-color: var(--el-tag-bg-color);
-    border-color: var(--el-tag-border-color);
-    color: var(--el-tag-text-color);
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    vertical-align: middle;
-    height: 1.5rem;
-    padding: 0 0.6rem;
-    font-size: var(--el-tag-font-size);
-    line-height: 1;
-    border-width: 1px;
-    border-style: solid;
-    border-radius: var(--el-tag-border-radius);
-}
-
-html.dark .el-card {
-    --el-card-bg-color: var(--el-bg-color-overlay)
-}
 .flex-row-lc {
     display: flex;
     align-items: baseline;

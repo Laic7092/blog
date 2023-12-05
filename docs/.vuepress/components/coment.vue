@@ -17,7 +17,7 @@ import { computed, inject, ref } from 'vue'
 const page = usePageData()
 const code = ref('')
 
-const host = window.location.host
+const host = 'https://laic7092.github.io/blog'
 const client_id = 'fe6bcb1d95f275c83276'
 const redirect_uri = computed(() => host + page.value.path)
 const authUrl = `https://github.com/login/oauth/authorize?client_id=${client_id}&redirect_uri=${redirect_uri.value}`

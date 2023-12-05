@@ -5,29 +5,50 @@
                 <h3>Posts</h3>
                 <ul>
                     <li v-for="(post, idx) in filterList" :key="idx">
-                        <div class="el-card mgb-20">
+                        <article class="el-card mgb-20">
                             <header>
                                 <router-link :to="post.path">{{ post.title }}</router-link>
                             </header>
                             <p class="content" v-text="post.contentRendered" style="white-space: pre-line;"></p>
                             <footer>
-                                <div class="footer-tags mgb-10" v-if="Array.isArray(post.tags)">
-                                    <span class="mgr-10">
-                                        标签:
-                                    </span>
-                                    <span class="el-tag mgr-10" v-for="(tag, idx) in post.tags" :key="idx">{{
+                                <div class="row">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" class="feather feather-navigation">
+                                        <polygon points="3 11 22 2 13 21 11 13 3 11"></polygon>
+                                    </svg>
+                                    <span>abc</span>
+                                </div>
+                                <div class="row">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" class="feather feather-tag">
+                                        <path
+                                            d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z">
+                                        </path>
+                                        <line x1="7" y1="7" x2="7" y2="7"></line>
+                                    </svg>
+                                    <span class="el-tag1 mgr-10" v-for="(tag, idx) in post.tags" :key="idx">{{
                                         tag
                                     }}</span>
                                 </div>
-                                <span>创建时间: {{ post.date || '暂无' }}</span>
+                                <div class="row">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" class="feather feather-clock">
+                                        <circle cx="12" cy="12" r="10"></circle>
+                                        <polyline points="12 6 12 12 16 14"></polyline>
+                                    </svg>
+                                    <time pubdate>{{ post.date }}</time>
+                                </div>
                             </footer>
-                        </div>
+                        </article>
                     </li>
                 </ul>
             </div>
             <div class="tag-list">
 
-                <div class="flex-row-lc form-header">
+                <div>
                     <h3>Tags</h3>
                     <span v-if="filterParam.tags" class="el-tag is-round deletable mgl-10">
                         <span>{{ filterParam.tags }}</span>
@@ -88,10 +109,8 @@ const fullList = initList.map(post => {
         // 去除 HTML 标签和换行符，并替换 # 和空格#
         let processedString = contentRendered.replace(/<\/?[^>]+>/g, '').replace(/[\r\n]+/g, '').replace(/# | #/g, '');
         // 截取前 50 个字符
-        post.contentRendered = processedString.slice(0, 50);
+        post.contentRendered = processedString.slice(0, 75);
     }
-    if (date)
-        post.date = date.split('T')[0] ?? ''
     return post
 })
 // console.log('full', fullList)
@@ -178,19 +197,26 @@ const classifyList = computed(() => {
     background-color: var(--el-bg-color);
 }
 
-
-
 .section1 {
     display: flex;
-
+    // font-size: 14px;
     .post-list {
         flex: 3;
 
-        .footer-tags {
-            span {
-                vertical-align: middle;
+        .row {
+            display: inline-flex;
+            width: 33.33%;
+            align-items: center;
+        }
+
+        @media (max-width:419px) {
+            .row {
+                display: flex;
+                width: 100%;
             }
         }
+
+
     }
 
     .tag-list {
@@ -217,8 +243,13 @@ const classifyList = computed(() => {
     background-color: var(--el-color-primary-light-5);
 }
 
-.flex-row-lc {
-    display: flex;
-    align-items: baseline;
+.feather  {
+    width: 1rem;
+    height: 1rem;
+    margin-right: 5px;
+}
+
+.content {
+    margin: 5px 0;
 }
 </style>

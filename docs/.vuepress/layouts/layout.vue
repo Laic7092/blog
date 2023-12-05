@@ -46,13 +46,7 @@ const subscribe = () => {
                     <input class="el-button el-button--primary mgr-10" type="button" value="点赞" @click="subscribe">
                     <input class="el-button el-button--primary" type="button" value="转发" @click="subscribe">
                 </div>
-                <div>
-                    <form action="">
-                        <label for="malou" class="mgr-10">Email: </label>
-                        <input type="email" name="malou" id="malou" placeholder="请输入邮箱" class="el-input-inner mgr-10">
-                        <input class="el-button el-button--primary" type="button" value="订阅内容" @click="subscribe">
-                    </form>
-                </div>
+                <coment></coment>
             </template>
         </ParentLayout>
     </div>

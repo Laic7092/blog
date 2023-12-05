@@ -4,7 +4,7 @@ date: 2023-03-21 20:51:18
 tags:
 - js
 ---
-## 1.一切（引用类型）都是对象，对象是属性的集合
+## 一切（引用类型）都是对象，对象是属性的集合
 
 ECMAScript有6种简单数据类型（也称为原始类型）: Undefined、Null、Boolean、Number、String和Symbol。还有一种复杂数据类型叫Object（对象）。Object是一种无序名值对的集合
 **Object.prototype**:
@@ -16,19 +16,19 @@ ECMAScript有6种简单数据类型（也称为原始类型）: Undefined、Null
 6. toString()：返回对象的字符串表示。
 7. valueOf()：返回对象对应的字符串、数值或布尔值表示。通常与toString()的返回值相同。
 
-## 2.函数和对象的关系
+## 函数和对象的关系
 
 对象是函数创建的，而函数却又是一种对象
 
 对象被认为是某个特定引用类型的实例。新对象通过使用new操作符后跟一个构造函数（constructor）来创建。构造函数就是用来创建新对象的函数
 
-## 3.prototype原型
+## prototype原型
 
 每个函数都默认有一个属性prototype，对象：（属性的集合）,prototype属性值为一个对象，称为函数原型对象，而原型对象默认的只有一个叫做constructor的属性，指向这个函数本身。
 
 ![](https://laix7-pic-bed-1318281615.cos.ap-nanjing.myqcloud.com/JsProto&Closure1.png)
 
-## 4.隐式原型`_proto_`
+## 隐式原型`_proto_`
 
 每个函数function都有一个prototype，即原型。而每个对象都有一个`_proto_`，即为隐式原型。
 
@@ -44,7 +44,7 @@ ECMAScript有6种简单数据类型（也称为原始类型）: Undefined、Null
 
 ![](https://laix7-pic-bed-1318281615.cos.ap-nanjing.myqcloud.com/JsProto&Closure2.png)
 
-## 5.instanceof（表示的就是一种继承关系，或者原型链的结构）
+## instanceof（表示的就是一种继承关系，或者原型链的结构）
 
 对于值类型，你可以通过typeof判断,但是typeof在判断到引用类型的时候，返回值只有object/function
 
@@ -64,7 +64,7 @@ console.log(Object instanceof Function)
 
 
 
-## 6.继承
+## 继承
 
 javascript中的继承是通过原型链来体现的，访问一个对象的属性时，先在基本属性中查找，如果没有，再沿着`_proto_`这条链向上找，这就是原型链。
 
@@ -87,7 +87,7 @@ console.log(obj1.hasOwnProperty("hasOwnProperty"))  //false
 
 ![](https://laix7-pic-bed-1318281615.cos.ap-nanjing.myqcloud.com/JsProto&Closure3.png)
 
-## 7.原型的灵活性
+## 原型的灵活性
 
 **对象属性**可以**随时改动**。对象或者函数，刚开始new出来之后，可能啥属性都没有。但是你可以这会儿加一个，过一会儿在加两个，非常灵活。
 

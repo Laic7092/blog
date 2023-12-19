@@ -1,13 +1,15 @@
 <script setup lang="ts">
-import {usePageData} from '@vuepress/client'
+import { usePageData } from '@vuepress/client'
 import ParentLayout from '@vuepress/theme-default/layouts/Layout.vue'
-import {computed, ref} from "vue";
+import { computed, ref } from "vue"
+import { like } from '../apis/index.js';
 
 const page = usePageData()
-const {frontmatter} = page.value
+// console.log(page.value, 'malou')
+const { frontmatter, key } = page.value
 const notPost = computed(() => {
-  const {notPost} = frontmatter
-  return notPost
+  const { notPost } = frontmatter
+  return notPost === true ? true : false
 })
 const getYearMonDay = (date: Date) => {
   let y = date.getFullYear()
@@ -29,6 +31,11 @@ const getDateString = (date: string | Date | undefined) => {
 const subscribe = () => {
   alert('敬请期待')
 }
+
+const likeThePost = async () => {
+  const res = await like({ id: key })
+  console.log(res)
+}
 </script>
 
 <template>
@@ -49,7 +56,7 @@ const subscribe = () => {
       </template>
       <template #page-content-bottom v-if="!notPost">
         <div class="mgb-20">
-          <input class="el-button el-button--primary mgr-10" type="button" value="点赞" @click="subscribe">
+          <input class="el-button el-button--primary mgr-10" type="button" value="点赞" @click="likeThePost">
           <input class="el-button el-button--primary" type="button" value="转发" @click="subscribe">
         </div>
       </template>
@@ -58,7 +65,6 @@ const subscribe = () => {
 </template>
 
 <style lang="scss">
-
 .el-input-inner {
   font-size: inherit;
   padding: 0.5rem 1rem;

@@ -75,7 +75,6 @@
 </template>
 
 <script setup lang="ts">
-import {RouterLink} from "vue-router";
 import {ref, computed} from 'vue';
 import initList from './malou.js'
 // 截取部分内容

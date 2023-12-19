@@ -6,10 +6,15 @@ import { like } from '../apis/index.js';
 
 const page = usePageData()
 // console.log(page.value, 'malou')
-const { frontmatter, key } = page.value
 const notPost = computed(() => {
+  const { frontmatter } = page.value
   const { notPost } = frontmatter
-  return notPost === true ? true : false
+  return notPost
+})
+
+const key = computed(() => {
+  const { key } = page.value
+  return key
 })
 const getYearMonDay = (date: Date) => {
   let y = date.getFullYear()
@@ -41,7 +46,7 @@ const likeThePost = async () => {
 <template>
   <div>
     <ParentLayout>
-      <template #page-content-top v-if="!notPost">
+      <template #page-content-top v-if="notPost !== true">
         <div class="content-top">
           <h1>{{ page.title }}</h1>
           <div class="mgb-10">
@@ -54,7 +59,7 @@ const likeThePost = async () => {
           </div>
         </div>
       </template>
-      <template #page-content-bottom v-if="!notPost">
+      <template #page-content-bottom v-if="notPost !== true">
         <div class="mgb-20">
           <input class="el-button el-button--primary mgr-10" type="button" value="点赞" @click="likeThePost">
           <input class="el-button el-button--primary" type="button" value="转发" @click="subscribe">

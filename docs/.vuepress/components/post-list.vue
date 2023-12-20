@@ -2,7 +2,7 @@
     <div>
         <div class="section1">
             <div class="post-list">
-                <h3>Posts</h3>
+                <span class="title">Posts</span>
                 <ul>
                     <li v-for="(post, idx) in filterList" :key="idx">
                         <article class="el-card mgb-20">
@@ -13,29 +13,29 @@
                             <footer>
                                 <div class="row">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                         stroke-linejoin="round" class="feather feather-navigation">
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" class="feather feather-navigation">
                                         <polygon points="3 11 22 2 13 21 11 13 3 11"></polygon>
                                     </svg>
                                     <span>abc</span>
                                 </div>
                                 <div class="row">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                         stroke-linejoin="round" class="feather feather-tag">
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" class="feather feather-tag">
                                         <path
                                             d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z">
                                         </path>
                                         <line x1="7" y1="7" x2="7" y2="7"></line>
                                     </svg>
                                     <span class="el-tag1 mgr-10" v-for="(tag, idx) in post.tags" :key="idx">{{
-                                            tag
-                                        }}</span>
+                                        tag
+                                    }}</span>
                                 </div>
                                 <div class="row">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                         stroke-linejoin="round" class="feather feather-clock">
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" class="feather feather-clock">
                                         <circle cx="12" cy="12" r="10"></circle>
                                         <polyline points="12 6 12 12 16 14"></polyline>
                                     </svg>
@@ -47,15 +47,14 @@
                 </ul>
             </div>
             <div class="tag-list">
-
                 <div>
-                    <h3>Tags</h3>
+                    <span class="title">Tags</span>
                     <span v-if="filterParam.tags" class="el-tag is-round deletable mgl-10">
                         <span>{{ filterParam.tags }}</span>
                         <span class="del-btn" @click="filterPost('')">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
                                 <path fill="currentColor"
-                                      d="M764.288 214.592 512 466.88 259.712 214.592a31.936 31.936 0 0 0-45.12 45.12L466.752 512 214.528 764.224a31.936 31.936 0 1 0 45.12 45.184L512 557.184l252.288 252.288a31.936 31.936 0 0 0 45.12-45.12L557.12 512.064l252.288-252.352a31.936 31.936 0 1 0-45.12-45.184z">
+                                    d="M764.288 214.592 512 466.88 259.712 214.592a31.936 31.936 0 0 0-45.12 45.12L466.752 512 214.528 764.224a31.936 31.936 0 1 0 45.12 45.184L512 557.184l252.288 252.288a31.936 31.936 0 0 0 45.12-45.12L557.12 512.064l252.288-252.352a31.936 31.936 0 1 0-45.12-45.184z">
                                 </path>
                             </svg>
                         </span>
@@ -65,7 +64,7 @@
                     <ul>
                         <li v-for="(classify, idx) in classifyList" :key="idx" class="mgb-20">
                             <input type="button" @click="filterPost(classify[0])"
-                                   :value="classify[0] + '(' + classify[1] + ')'" class="el-tag">
+                                :value="classify[0] + '(' + classify[1] + ')'" class="el-tag">
                         </li>
                     </ul>
                 </div>
@@ -75,11 +74,11 @@
 </template>
 
 <script setup lang="ts">
-import {ref, computed} from 'vue';
+import { ref, computed } from 'vue';
 import initList from './malou.js'
 // 截取部分内容
 const fullList = initList.map(post => {
-    const {contentRendered} = post
+    const { contentRendered } = post
     if (contentRendered) {
         // 去除 HTML 标签和换行符，并替换 # 和空格#
         let processedString = contentRendered.replace(/<\/?[^>]+>/g, '').replace(/[\r\n]+/g, '').replace(/# | #/g, '');
@@ -98,7 +97,7 @@ const filterPost = (classify: string) => {
 }
 
 const filterList = computed(() => {
-    const {tags} = filterParam.value
+    const { tags } = filterParam.value
     let res = fullList
     if (tags !== '') {
         res = fullList.filter(post => {
@@ -135,7 +134,7 @@ const sort = (flag: string) => {
 const map = new Map()
 const classifyList = computed(() => {
     fullList.forEach(post => {
-        const {tags} = post
+        const { tags } = post
         tags.forEach(tags => {
             if (map.has(tags)) {
                 map.set(tags, map.get(tags) + 1)
@@ -173,7 +172,6 @@ const classifyList = computed(() => {
 
 .section1 {
     display: flex;
-    // font-size: 14px;
     .post-list {
         flex: 3;
 
@@ -205,6 +203,13 @@ const classifyList = computed(() => {
     }
 }
 
+.title {
+    display: inline-block;
+    font-size: 1.35rem;
+    font-weight: 600;
+    padding: 1rem 0;
+}
+
 .del-btn {
     height: 1em;
     width: 1em;
@@ -226,4 +231,5 @@ const classifyList = computed(() => {
 .content {
     margin: 5px 0;
 }
+
 </style>

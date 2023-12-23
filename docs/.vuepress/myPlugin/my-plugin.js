@@ -6,7 +6,8 @@ const barPlugin = () => {
             name: 'vuepress-plugin-bar',
             extendsPage: (page) => {
                 let { frontmatter, path, contentRendered, title, key, date } = page
-                let { tags, notPost } = frontmatter
+                let { tags, notPost, visible } = frontmatter
+                if (visible === false) return
                 if (tags && typeof tags === 'string') {
                     tags = [tags]
                 } else if (!tags) {

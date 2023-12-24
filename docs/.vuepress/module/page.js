@@ -1,12 +1,5 @@
-import { usePagesData, Content } from '@vuepress/client'
+import { usePagesData } from '@vuepress/client'
 
-import { inject } from 'vue'
-try {
-    console.log(Content, 'dasd')
-
-} catch (error) {
-    console.log(error)
-}
 const getPages = async () => {
     let res = []
     const object = usePagesData().value

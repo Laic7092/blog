@@ -63,8 +63,9 @@
                 <div class="el-card">
                     <ul>
                         <li v-for="(classify, idx) in classifyList" :key="idx" class="mgb-20">
-                            <input type="button" @click="filterPost(classify[0])"
-                                :value="classify[0] + '(' + classify[1] + ')'" class="el-tag">
+                            <button type="button" class="el-tag" @click="filterPost(classify[0])">
+                                {{ classify[0] + '(' + classify[1] + ')' }}
+                            </button>
                         </li>
                     </ul>
                 </div>
@@ -172,6 +173,7 @@ const classifyList = computed(() => {
 
 .section1 {
     display: flex;
+
     .post-list {
         flex: 3;
 
@@ -231,5 +233,4 @@ const classifyList = computed(() => {
 .content {
     margin: 5px 0;
 }
-
 </style>

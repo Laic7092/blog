@@ -3,9 +3,12 @@ import { usePageData } from '@vuepress/client'
 import ParentLayout from '@vuepress/theme-default/layouts/Layout.vue'
 import { computed, ref } from "vue"
 import { like } from '../apis/index.js';
+// import { inject } from 'vue'
+// console.log(inject('msg'),'确实可以?') 
+
 
 const page = usePageData()
-// console.log(page.value, 'malou')
+
 const notPost = computed(() => {
   const { frontmatter } = page.value
   const { notPost } = frontmatter
@@ -18,7 +21,10 @@ const key = computed(() => {
 })
 const getYearMonDay = (date: Date) => {
   let y = date.getFullYear()
-  let m = date.getMonth() + 1
+  let m: number | string = date.getMonth() + 1
+  if (m <= 9) {
+    m = '0' + m
+  }
   let d = date.getDate()
   return `${y}-${m}-${d}`
 }

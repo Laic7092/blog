@@ -12,6 +12,6 @@ const getPages = async () => {
     }
     return res
 }
-const pages = await getPages()
-
+// const pages = await getPages()const pages = []
+const pages = []
 export default pages

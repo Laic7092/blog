@@ -39,7 +39,9 @@ const canvas = document.createElement('canvas')
 canvas.width = 400
 canvas.height = 800
 const ctx = canvas.getContext('2d')
-document.body.appendChild(canvas)
+window.addEventListener('load',() => {
+    document.body.appendChild(canvas)
+})
 
 // 生成游戏面板
 const row = 20
@@ -109,7 +111,15 @@ function keyboardInputHandler(keyboardEvent) {
 
 今天晚上写！！！
 
+1. 开启游戏循环
 
+   ```javascript
+   function gameloop() {
+    
+   }
+   ```
+
+   
 
 ## 小结
 

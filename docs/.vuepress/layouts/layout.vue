@@ -29,14 +29,21 @@ const getYearMonDay = (date: Date) => {
   return `${y}-${m}-${d}`
 }
 
-const getDateString = (date: string | Date | undefined) => {
-  if (typeof date === 'string') {
-    return getYearMonDay(new Date(date))
-  } else if (date instanceof Date) {
-    return getYearMonDay(date)
-  } else {
-    return "0000-00-00"
+const getDateString = (dateStr: string | undefined) => {
+  if (typeof dateStr !== 'string') {
+    return ''
   }
+  const date = new Date(dateStr);
+  const options = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric'}
+
+  return date.toLocaleString('zh-CN', options)
+  // if (typeof date === 'string') {
+  //   return getYearMonDay(new Date(date))
+  // } else if (date instanceof Date) {
+  //   return getYearMonDay(date)
+  // } else {
+  //   return "0000-00-00"
+  // }
 }
 
 const subscribe = () => {

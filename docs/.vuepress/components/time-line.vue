@@ -32,7 +32,7 @@
                 <div v-for="(citem, cidx) in item[1]" :key="cidx">
                     <template v-if="citem.length > 0">
                         <h3>
-                            {{ cidx }}月
+                            {{ cidx + 1 }}月
                         </h3>
                         <div v-for="(ccitem, ccidx) in citem" :key="ccidx">
                             <div>
@@ -59,13 +59,13 @@ initList.forEach(i => {
     const day = date.getDate()
 
     const saved = timeline.has(year)
-    const rt = { title, path, day }
+    const route = { title, path, day }
     if (saved) {
         const curYear = timeline.get(year)
-        curYear[mon].push(rt)
+        curYear[mon].push(route)
     } else {
-        const ar = new Array(13).fill(0).map(i => [])
-        ar[mon].push(rt)
+        const ar = new Array(12).fill(0).map(i => [])
+        ar[mon].push(route)
         timeline.set(year, ar)
     }
 })
@@ -74,7 +74,7 @@ const tlArray = computed(() => {
     let ar = Array.from(timeline)
     const param = ym.value.split('-')
     const year = param[0]
-    const mon = parseInt(param[1])
+    const mon = parseInt(param[1]) - 1
     if (year) {
         ar = ar.filter((i) => i[0].toString() === year)
     }

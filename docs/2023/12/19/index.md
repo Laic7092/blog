@@ -1,6 +1,6 @@
 ---
 visible: false
-date: 2023-12-19 18:22:42
+date: 2023-12-19 18:22
 tags:
 - diary
 ---

@@ -2,6 +2,7 @@
 visible: false
 title: 基于CANVAS快速制作俄罗斯方块
 date: 2023-12-20 11:47
+location: 长沙天心区湘江中路
 tags:
 - js
 - game

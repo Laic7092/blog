@@ -1,5 +1,6 @@
 ---
 title: 复刻俄罗斯方块-游戏剖析
+location: 长沙天心区新姚南路
 tags:
 - game
 - elsfk

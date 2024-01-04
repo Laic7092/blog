@@ -1,6 +1,7 @@
 ---
 title: Js原型和闭包
 date: 2023-03-21 20:51
+location: 长沙岳麓区中电软件园
 tags:
 - js
 ---

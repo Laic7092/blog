@@ -1,10 +1,10 @@
 ---
-title: 复刻植物大战僵尸
+title: 复刻植物大战僵尸-part0
 date: 2024-01-03 21:40
 tags:
 - game
 - pvz
-location: 长沙天心区新姚南路20号
+location: 长沙天心区新姚南路
 ---
 
 ## 前言

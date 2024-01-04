@@ -1,6 +1,7 @@
 ---
 date: 2024-01-01 23:38
 title: 俄罗斯方块-面板和方块数据结构
+location: 长沙天心区湘江中路
 tags:
 - game
 - elsfk

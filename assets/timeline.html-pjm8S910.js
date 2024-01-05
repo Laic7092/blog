@@ -1,0 +1,1 @@
+import{_ as t,r as n,o,c,a as _}from"./app-d7610jpZ.js";const l={};function r(i,s){const e=n("time-line");return o(),c("div",null,[_(e)])}const m=t(l,[["render",r],["__file","timeline.html.vue"]]);export{m as default};

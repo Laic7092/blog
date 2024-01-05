@@ -1,0 +1,1 @@
+import{_ as t,r as o,o as n,c as s,a as c}from"./app-d7610jpZ.js";const _={};function r(a,l){const e=o("post-list");return n(),s("div",null,[c(e)])}const m=t(_,[["render",r],["__file","index.html.vue"]]);export{m as default};

@@ -1,0 +1,1 @@
+const t=JSON.parse('{"key":"v-8daa1a0e","path":"/","title":"","lang":"zh-CN","frontmatter":{"home":true,"notPost":true,"pageClass":"malou"},"headers":[],"git":{"updatedTime":1701414686000,"contributors":[{"name":"Laix","email":"894169287@qq.com","commits":5}]},"filePathRelative":"README.md"}');export{t as data};

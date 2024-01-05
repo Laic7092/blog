@@ -1,10 +1,10 @@
 ---
 title: 复刻植物大战僵尸-part1.1
-date: 2024-01-04 14：40
+date: 2024-01-05 14:40
 tags:
 - game
 - pvz
-location: 长沙天心区湘江中路i
+location: 长沙天心区湘江中路
 ---
 
 ## pixi？

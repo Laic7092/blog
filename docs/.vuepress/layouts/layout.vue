@@ -77,6 +77,9 @@ const likeThePost = async () => {
           <input class="el-button el-button--primary mgr-10" type="button" value="点赞" @click="likeThePost">
           <input class="el-button el-button--primary" type="button" value="转发" @click="subscribe">
         </div>
+        <div>
+          <a href="mailto:894169287@qq.com">联系作者</a>
+        </div>
       </template>
     </ParentLayout>
   </div>

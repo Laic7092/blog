@@ -1,6 +1,7 @@
 ---
 date: 2024-01-22 16:44
 title: 果然断更了
+location: 长沙天心区新姚南路
 tags:
 - talk
 ---

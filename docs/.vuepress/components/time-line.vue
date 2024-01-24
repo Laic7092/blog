@@ -1,29 +1,10 @@
 <template>
     <div>
-        <label for="ym">选择年月</label>
-        <input type="month" id="ym" v-model="ym">
-        {{ ym }}
-        <!-- <fieldset>
-            <legend>选择年份</legend>
-            <div>
-                <input type="checkbox" id="2023" name="interest" value="coding" />
-                <label for="2023">2023年</label>
-            </div>
-            <div>
-                <input type="checkbox" id="2024" name="interest" value="music" />
-                <label for="2024">2024年</label>
-            </div>
-        </fieldset>
-        <fieldset>
-            <legend>选择月份</legend>
-            <div style="display: flex;">
-
-                <div v-for="item in 12" style="width: 25%">
-                    <input type="checkbox" :id="item + ''" :name="item + ''" :value="item" />
-                    <label :for="item + ''">{{ item }}月</label>
-                </div>
-            </div>
-        </fieldset> -->
+        <h1>归档</h1>
+        <div class="flex-r-lc">
+            <label for="ym">选择年月</label>
+            <input type="month" id="ym" v-model="ym">
+        </div>
         <ul>
             <li v-for="(item, idx) in tlArray" :key="idx">
                 <h2>
@@ -69,7 +50,6 @@ initList.forEach(i => {
         timeline.set(year, ar)
     }
 })
-// console.log(timeline)
 const tlArray = computed(() => {
     let ar = Array.from(timeline)
     const param = ym.value.split('-')
@@ -88,12 +68,15 @@ const tlArray = computed(() => {
 })
 
 const ym = ref('')
-// console.log(tlArray)
 </script>
 
 <style scoped lang="scss">
 label {
     width: 80px;
     display: inline-block;
+}
+.flex-r-lc {
+    display: flex;
+    align-items: center;
 }
 </style>

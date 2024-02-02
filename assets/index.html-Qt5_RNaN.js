@@ -1,0 +1,1 @@
+const t=JSON.parse('{"key":"v-6dd318d2","path":"/2023/12/23/","title":"干不完的工作","lang":"zh-CN","frontmatter":{"visible":false,"title":"干不完的工作","date":"2023-12-23 21:11","tags":["talk"]},"headers":[],"git":{"updatedTime":1704295183000,"contributors":[{"name":"Laix","email":"894169287@qq.com","commits":4}]},"filePathRelative":"2023/12/23/index.md"}');export{t as data};

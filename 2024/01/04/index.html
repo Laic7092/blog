@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="generator" content="VuePress 2.0.0-rc.0">
+    <style>
+      :root {
+        --c-bg: #fff;
+      }
+      html.dark {
+        --c-bg: #22272e;
+      }
+      html, body {
+        background-color: var(--c-bg);
+      }
+    </style>
+    <script>
+      const userMode = localStorage.getItem('vuepress-color-scheme');
+			const systemDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+			if (userMode === 'dark' || (userMode !== 'light' && systemDarkMode)) {
+				document.documentElement.classList.toggle('dark', true);
+			}
+    </script>
+    <link rel="apple-touch-icon" href="/blog/apple-touch-icon.png"><title>复刻植物大战僵尸-part1 | Laix's blog</title><meta name="description" content="这是我的第一个博客">
+    <link rel="preload" href="/blog/assets/style-MMpeQddI.css" as="style"><link rel="stylesheet" href="/blog/assets/style-MMpeQddI.css">
+    <link rel="modulepreload" href="/blog/assets/app-PV69FY-z.js"><link rel="modulepreload" href="/blog/assets/index.html-jE-lymIk.js"><link rel="modulepreload" href="/blog/assets/index.html-splFYaIF.js">
+    <link rel="prefetch" href="/blog/assets/index.html-8_ab6CTp.js" as="script"><link rel="prefetch" href="/blog/assets/about.html-oWFCB2cC.js" as="script"><link rel="prefetch" href="/blog/assets/timeline.html-FRDbZWNe.js" as="script"><link rel="prefetch" href="/blog/assets/index.html-kvwIKZNe.js" as="script"><link rel="prefetch" href="/blog/assets/index.html-37nrs5oU.js" as="script"><link rel="prefetch" href="/blog/assets/index.html-0rsIWrP1.js" as="script"><link rel="prefetch" href="/blog/assets/index.html-e8rbemMw.js" as="script"><link rel="prefetch" href="/blog/assets/index.html-22j6JkAv.js" as="script"><link rel="prefetch" href="/blog/assets/index.html-Qt5_RNaN.js" as="script"><link rel="prefetch" href="/blog/assets/index.html-18OyiLI3.js" as="script"><link rel="prefetch" href="/blog/assets/index.html-b7ZzMVD0.js" as="script"><link rel="prefetch" href="/blog/assets/index.html-df52BuHr.js" as="script"><link rel="prefetch" href="/blog/assets/index.html-5rK2e7JC.js" as="script"><link rel="prefetch" href="/blog/assets/index.html-YHSWo7Rj.js" as="script"><link rel="prefetch" href="/blog/assets/index.html-WGFjf9O0.js" as="script"><link rel="prefetch" href="/blog/assets/index.html-phZQ9ynv.js" as="script"><link rel="prefetch" href="/blog/assets/404.html-r6aI8Oiv.js" as="script"><link rel="prefetch" href="/blog/assets/index.html-ynaAo7yf.js" as="script"><link rel="prefetch" href="/blog/assets/about.html-HP-K7JcM.js" as="script"><link rel="prefetch" href="/blog/assets/timeline.html-eMSGsQYu.js" as="script"><link rel="prefetch" href="/blog/assets/index.html-Dg3YBTW3.js" as="script"><link rel="prefetch" href="/blog/assets/index.html-2QTy6hu7.js" as="script"><link rel="prefetch" href="/blog/assets/index.html-Fu-JwrX7.js" as="script"><link rel="prefetch" href="/blog/assets/index.html-LycDQVS5.js" as="script"><link rel="prefetch" href="/blog/assets/index.html-a0MaGGq8.js" as="script"><link rel="prefetch" href="/blog/assets/index.html-5X8hSlyH.js" as="script"><link rel="prefetch" href="/blog/assets/index.html-GeYfm8is.js" as="script"><link rel="prefetch" href="/blog/assets/index.html-4gKJz4tS.js" as="script"><link rel="prefetch" href="/blog/assets/index.html-zuMRVXNX.js" as="script"><link rel="prefetch" href="/blog/assets/index.html-MjFjN-tx.js" as="script"><link rel="prefetch" href="/blog/assets/index.html-Lh9BnD2L.js" as="script"><link rel="prefetch" href="/blog/assets/index.html-EwWSIyP5.js" as="script"><link rel="prefetch" href="/blog/assets/index.html-Hw-qsNsw.js" as="script"><link rel="prefetch" href="/blog/assets/404.html-Sal6Mfpr.js" as="script">
+  </head>
+  <body>
+    <div id="app"><!--[--><div><div class="theme-container"><!--[--><header class="navbar"><div class="toggle-sidebar-button" title="toggle sidebar" aria-expanded="false" role="button" tabindex="0"><div class="icon" aria-hidden="true"><span></span><span></span><span></span></div></div><span><a href="/blog/" class=""><!----><span class="site-name">Laix&#39;s blog</span></a></span><div class="navbar-items-wrapper" style=""><!--[--><!--]--><nav class="navbar-items can-hide"><!--[--><div class="navbar-item"><a href="/blog/" class="" aria-label="首页"><!--[--><!--]--> 首页 <!--[--><!--]--></a></div><div class="navbar-item"><a href="/blog/timeline.md" class="" aria-label="归档"><!--[--><!--]--> 归档 <!--[--><!--]--></a></div><div class="navbar-item"><a href="/blog/about.md" class="" aria-label="关于"><!--[--><!--]--> 关于 <!--[--><!--]--></a></div><div class="navbar-item"><a class="external-link" href="https://github.com/Laic7092/blog" rel="noopener noreferrer" target="_blank" aria-label="GitHub"><!--[--><!--]--> GitHub <span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">open in new window</span></span><!--[--><!--]--></a></div><!--]--></nav><!--[--><!--]--><button class="toggle-color-mode-button" title="toggle color mode"><svg style="" class="icon" focusable="false" viewBox="0 0 32 32"><path d="M16 12.005a4 4 0 1 1-4 4a4.005 4.005 0 0 1 4-4m0-2a6 6 0 1 0 6 6a6 6 0 0 0-6-6z" fill="currentColor"></path><path d="M5.394 6.813l1.414-1.415l3.506 3.506L8.9 10.318z" fill="currentColor"></path><path d="M2 15.005h5v2H2z" fill="currentColor"></path><path d="M5.394 25.197L8.9 21.691l1.414 1.415l-3.506 3.505z" fill="currentColor"></path><path d="M15 25.005h2v5h-2z" fill="currentColor"></path><path d="M21.687 23.106l1.414-1.415l3.506 3.506l-1.414 1.414z" fill="currentColor"></path><path d="M25 15.005h5v2h-5z" fill="currentColor"></path><path d="M21.687 8.904l3.506-3.506l1.414 1.415l-3.506 3.505z" fill="currentColor"></path><path d="M15 2.005h2v5h-2z" fill="currentColor"></path></svg><svg style="display:none;" class="icon" focusable="false" viewBox="0 0 32 32"><path d="M13.502 5.414a15.075 15.075 0 0 0 11.594 18.194a11.113 11.113 0 0 1-7.975 3.39c-.138 0-.278.005-.418 0a11.094 11.094 0 0 1-3.2-21.584M14.98 3a1.002 1.002 0 0 0-.175.016a13.096 13.096 0 0 0 1.825 25.981c.164.006.328 0 .49 0a13.072 13.072 0 0 0 10.703-5.555a1.01 1.01 0 0 0-.783-1.565A13.08 13.08 0 0 1 15.89 4.38A1.015 1.015 0 0 0 14.98 3z" fill="currentColor"></path></svg></button><!----></div></header><!--]--><div class="sidebar-mask"></div><!--[--><aside class="sidebar"><nav class="navbar-items"><!--[--><div class="navbar-item"><a href="/blog/" class="" aria-label="首页"><!--[--><!--]--> 首页 <!--[--><!--]--></a></div><div class="navbar-item"><a href="/blog/timeline.md" class="" aria-label="归档"><!--[--><!--]--> 归档 <!--[--><!--]--></a></div><div class="navbar-item"><a href="/blog/about.md" class="" aria-label="关于"><!--[--><!--]--> 关于 <!--[--><!--]--></a></div><div class="navbar-item"><a class="external-link" href="https://github.com/Laic7092/blog" rel="noopener noreferrer" target="_blank" aria-label="GitHub"><!--[--><!--]--> GitHub <span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">open in new window</span></span><!--[--><!--]--></a></div><!--]--></nav><!--[--><!--]--><ul class="sidebar-items"><!--[--><li><p tabindex="0" class="sidebar-item sidebar-heading">复刻植物大战僵尸-part1 <!----></p><ul style="" class="sidebar-item-children"><!--[--><li><a aria-current="page" href="/blog/2024/01/04/#免责声明" class="router-link-active router-link-exact-active sidebar-item" aria-label="免责声明"><!--[--><!--]--> 免责声明 <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/blog/2024/01/04/#网格" class="router-link-active router-link-exact-active sidebar-item" aria-label="网格"><!--[--><!--]--> 网格 <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/blog/2024/01/04/#植物和僵尸" class="router-link-active router-link-exact-active sidebar-item" aria-label="植物和僵尸"><!--[--><!--]--> 植物和僵尸 <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/blog/2024/01/04/#我承认我在水" class="router-link-active router-link-exact-active sidebar-item" aria-label="我承认我在水"><!--[--><!--]--> 我承认我在水 <!--[--><!--]--></a><!----></li><!--]--></ul></li><!--]--></ul><!--[--><!--]--></aside><!--]--><!--[--><main class="page"><!--[--><!--]--><div class="theme-default-content"><!--[--><!--[--><div class="content-top"><h1>复刻植物大战僵尸-part1</h1><div class="mgb-10"><span>Tags: </span><!--[--><span class="el-tag mgl-10">game</span><span class="el-tag mgl-10">pvz</span><!--]--></div><div><span>Date: </span><span class="mgl-10">2024年1月4日 13:10</span></div></div><!--]--><!--]--><div><h2 id="免责声明" tabindex="-1"><a class="header-anchor" href="#免责声明" aria-hidden="true">#</a> 免责声明</h2><p>本篇完全是本人瞎写的，未经仔细思考的结果，千万别学！！！后续有时间会进一步完善，但是我可能不会修改本篇，这并不是教程，而是我思考过程的记录。</p><h2 id="网格" tabindex="-1"><a class="header-anchor" href="#网格" aria-hidden="true">#</a> 网格</h2><p>中午稍微写了一会，脑子里沙也没有，写完这部分我有非常纠结到底要不要用<code>pixi.js</code>,有点害怕我学艺不精。晚上回去会给出<code>plant</code>和<code>zombie</code>的类，但我感觉还差的好远，尤其是渲染和交互。但是不管怎么样，干就完了。等主面板和僵尸植物的类写完，就是渲染和交互了，我计划是把选择植物，铲子给弄出来。然后依靠向日葵，豌豆射手，普通僵尸制作一个第一关，先从demo感受一下有和不足之处，再思考分析重新规划。</p><div class="language-javascript line-numbers-mode" data-ext="js"><pre class="language-javascript"><code><span class="token keyword">class</span> <span class="token class-name">Cell</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 贴图和位置还有待思考。。。</span>
+    type <span class="token operator">=</span> <span class="token string">&#39;ground&#39;</span> <span class="token comment">// 地板，草地,水面，屋顶</span>
+    position <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token literal-property property">x</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token literal-property property">y</span><span class="token operator">:</span> <span class="token number">0</span> <span class="token punctuation">}</span>
+    size <span class="token operator">=</span> <span class="token number">20</span>
+    baseSprite
+    isEmpty <span class="token operator">=</span> <span class="token boolean">true</span>
+    curPlant
+    extraSprite
+    <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token parameter">type<span class="token punctuation">,</span> position</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>type <span class="token operator">=</span> type
+        <span class="token keyword">this</span><span class="token punctuation">.</span>position <span class="token operator">=</span> position
+    <span class="token punctuation">}</span>
+
+    <span class="token function">plant</span><span class="token punctuation">(</span><span class="token parameter">plant</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token keyword">this</span><span class="token punctuation">.</span>isEmpty<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>curPlant <span class="token operator">=</span> plant
+            <span class="token keyword">this</span><span class="token punctuation">.</span>isEmpty <span class="token operator">=</span> <span class="token boolean">false</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>extraSprite <span class="token operator">=</span> plant<span class="token punctuation">.</span>baseSprite
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token function">clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token keyword">this</span><span class="token punctuation">.</span>isEmpty<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>curPlant <span class="token operator">=</span> <span class="token keyword">null</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>isEmpty <span class="token operator">=</span> <span class="token boolean">true</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>extraSprite <span class="token operator">=</span> <span class="token keyword">null</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+
+<span class="token keyword">class</span> <span class="token class-name">Floor</span> <span class="token punctuation">{</span>
+    row <span class="token operator">=</span> <span class="token number">6</span>
+    col <span class="token operator">=</span> <span class="token number">9</span>
+    cells <span class="token operator">=</span> <span class="token keyword">null</span>
+
+    <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token parameter">option</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        option <span class="token operator">=</span> <span class="token punctuation">{</span>
+            <span class="token literal-property property">row</span><span class="token operator">:</span> <span class="token number">5</span><span class="token punctuation">,</span>
+            <span class="token literal-property property">col</span><span class="token operator">:</span> <span class="token number">9</span><span class="token punctuation">,</span>
+            <span class="token literal-property property">rows</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
+                <span class="token literal-property property">idx</span><span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+                <span class="token literal-property property">type</span><span class="token operator">:</span> <span class="token string">&#39;grass&#39;</span>
+            <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+            <span class="token literal-property property">cols</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">]</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">const</span> <span class="token punctuation">{</span> row<span class="token punctuation">,</span> col <span class="token punctuation">}</span> <span class="token operator">=</span> option
+        <span class="token keyword">this</span><span class="token punctuation">.</span>row <span class="token operator">=</span> row
+        <span class="token keyword">this</span><span class="token punctuation">.</span>col <span class="token operator">=</span> col
+        <span class="token keyword">const</span> cells <span class="token operator">=</span> Array<span class="token punctuation">.</span><span class="token function">from</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">length</span><span class="token operator">:</span> <span class="token keyword">this</span><span class="token punctuation">.</span>row <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token keyword">new</span> <span class="token class-name">Array</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>col<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">fill</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Cell</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="植物和僵尸" tabindex="-1"><a class="header-anchor" href="#植物和僵尸" aria-hidden="true">#</a> 植物和僵尸</h2><p>没啥内容植物类，行为树我完不会写</p><div class="language-javascript line-numbers-mode" data-ext="js"><pre class="language-javascript"><code><span class="token comment">// plant.js</span>
+<span class="token keyword">class</span> <span class="token class-name">BehaviourTree</span> <span class="token punctuation">{</span>
+    <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    <span class="token punctuation">}</span>
+    <span class="token function">attack</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    <span class="token punctuation">}</span>
+    <span class="token function">defend</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    <span class="token punctuation">}</span>
+    <span class="token function">util</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Plant</span> <span class="token punctuation">{</span>
+    health
+    sprites
+    curSprite
+    cost
+    cellSize <span class="token operator">=</span> <span class="token number">1</span>
+    behaviourTree
+    <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> <span class="token class-name">OneShoot</span> <span class="token keyword">extends</span> <span class="token class-name">Plant</span> <span class="token punctuation">{</span>
+    name <span class="token operator">=</span> <span class="token string">&#39;OneShoot&#39;</span>
+    <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>behaviourTree <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">BehaviourTree</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>同样没啥内容动物类。。。</p><div class="language-javascript line-numbers-mode" data-ext="js"><pre class="language-javascript"><code><span class="token comment">// zoombie.js</span>
+<span class="token keyword">class</span> <span class="token class-name">BehaviourTree</span> <span class="token punctuation">{</span>
+    <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    <span class="token punctuation">}</span>
+    <span class="token function">attack</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    <span class="token punctuation">}</span>
+    <span class="token function">walk</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    <span class="token punctuation">}</span>
+    <span class="token function">run</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    <span class="token punctuation">}</span>
+    <span class="token function">eat</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Zoombie</span> <span class="token punctuation">{</span>
+    health
+    sprites
+    curSprite
+    behaviourTree
+    <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    <span class="token punctuation">}</span>
+
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> <span class="token class-name">CommonZombie</span> <span class="token keyword">extends</span> <span class="token class-name">Zoombie</span> <span class="token punctuation">{</span>
+    <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>behaviourTree <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">BehaviourTree</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="我承认我在水" tabindex="-1"><a class="header-anchor" href="#我承认我在水" aria-hidden="true">#</a> 我承认我在水</h2><p>这里是老规矩，<code>index.html</code>导入<code>main.js</code></p><p>我承认<code>Floor</code>类写的毫无意义，但是在我打算渲染出来之前我都没有想到要咋办。。。或者说，不太熟悉<code>PIXI.js</code>，说好的效率呢？</p><div class="language-javascript line-numbers-mode" data-ext="js"><pre class="language-javascript"><code><span class="token comment">// main.js with PIXI.js</span>
+<span class="token keyword">import</span> <span class="token operator">*</span> <span class="token keyword">as</span> <span class="token constant">PIXI</span> <span class="token keyword">from</span> <span class="token string">&#39;./pixi.mjs&#39;</span>
+<span class="token keyword">import</span> Floor <span class="token keyword">from</span> <span class="token string">&quot;./modules/gameScene/floor.js&quot;</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> app <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">PIXI<span class="token punctuation">.</span>Application</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">background</span><span class="token operator">:</span> <span class="token string">&#39;#1099bb&#39;</span><span class="token punctuation">,</span> <span class="token literal-property property">resizeTo</span><span class="token operator">:</span> window <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+document<span class="token punctuation">.</span>body<span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>app<span class="token punctuation">.</span>view<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> container <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">PIXI<span class="token punctuation">.</span>Container</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+container<span class="token punctuation">.</span>x <span class="token operator">=</span> <span class="token number">100</span>
+container<span class="token punctuation">.</span>y <span class="token operator">=</span> <span class="token number">100</span>
+app<span class="token punctuation">.</span>stage<span class="token punctuation">.</span><span class="token function">addChild</span><span class="token punctuation">(</span>container<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> sizeX <span class="token operator">=</span> <span class="token number">120</span>
+<span class="token keyword">const</span> sizeY <span class="token operator">=</span> <span class="token number">150</span>
+
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">5</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> row <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> <span class="token number">9</span><span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">const</span> path <span class="token operator">=</span> <span class="token punctuation">(</span>i <span class="token operator">+</span> j<span class="token punctuation">)</span> <span class="token operator">%</span> <span class="token number">2</span> <span class="token operator">===</span> <span class="token number">0</span> <span class="token operator">?</span> <span class="token string">&#39;/assets/img/dark.png&#39;</span> <span class="token operator">:</span> <span class="token string">&#39;/assets/img/light.png&#39;</span>
+        <span class="token keyword">const</span> grass <span class="token operator">=</span> <span class="token constant">PIXI</span><span class="token punctuation">.</span>Sprite<span class="token punctuation">.</span><span class="token function">from</span><span class="token punctuation">(</span>path<span class="token punctuation">)</span>
+        grass<span class="token punctuation">.</span>position<span class="token punctuation">.</span>x <span class="token operator">=</span> j <span class="token operator">*</span> sizeX
+        grass<span class="token punctuation">.</span>position<span class="token punctuation">.</span>y <span class="token operator">=</span> i <span class="token operator">*</span> sizeY
+        row<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>grass<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    container<span class="token punctuation">.</span><span class="token function">addChild</span><span class="token punctuation">(</span><span class="token operator">...</span>row<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>效果如下，一共两张图片间隔渲染，丑的很有特色。。。</p><p><img src="https://s2.loli.net/2024/01/04/82GrlkBeysOQD9U.png" alt="image-20240104225656527"></p><p>真的是历经了千辛万苦，完成了1%哈哈哈哈哈哈哈，写的<code>Class</code>不能说毫无关系，只能说啥也不是。。。还需要多多思考，当然<code>PIXI.js</code>用的也是相当不顺手的说，还有一点要说的就是，<code>plant</code>和<code>zoombie</code>的行为树，我是真不会啊，一想就觉得好难55555。是否有点不自量力了呢？但我觉得金坛已经做了足够多了，说不定明天就有UI了，后天就能放置植物(做梦中。。。)</p><p>顺便记录一下目录</p><p><img src="https://s2.loli.net/2024/01/04/ptORlT6f9n37cHY.png" alt="image-20240104225633546"></p><p>今天就到此结束了，明天的工作任务还有蛮重可能不会写，周末要出去玩一天，不加班的话会更新的（也不知道在和谁说话，自言自语这么有意思？）</p></div><!--[--><!--[--><div class="mgb-20"><input class="el-button el-button--primary mgr-10" type="button" value="点赞"><input class="el-button el-button--primary" type="button" value="转发"></div><div><a href="mailto:894169287@qq.com">联系作者</a></div><!--]--><!--]--></div><footer class="page-meta"><!----><div class="meta-item last-updated"><span class="meta-item-label">Last Updated: </span><!----></div><div class="meta-item contributors"><span class="meta-item-label">Contributors: </span><span class="meta-item-info"><!--[--><!--[--><span class="contributor" title="email: 894169287@qq.com">Laix</span><!----><!--]--><!--]--></span></div></footer><!----><!--[--><!--]--></main><!--]--></div></div><!----><!--]--></div>
+    <script type="module" src="/blog/assets/app-PV69FY-z.js" defer></script>
+  </body>
+</html>
